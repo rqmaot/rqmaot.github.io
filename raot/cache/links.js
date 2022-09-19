@@ -1,5 +1,8 @@
 /* Github Links */
 var vers = [
+["raot_2.070_windows.zip", "https://github.com/rqmaot/raotcache/releases/download/win2.070/raot_2.070_windows.zip"],
+["raot_2.070_linux.tar.gz", "https://github.com/rqmaot/raotcache/releases/download/linux2.070/raot_2.070_linux.tar.gz"],
+["raot_2.070_mac.zip", "https://github.com/rqmaot/raotcache/releases/download/mac2.070/raot_2.070_mac.zip"],
 ["raot_2.045_linux.tar.gz", "https://github.com/raotversions/raotversions/releases/download/linux2.045/raot_2.045_linux.tar.gz"],
 ["raot_2.043_Linux64bit.tar.gz", "https://github.com/raotversions/raotversions/releases/download/linux2.043/raot_2.043_Linux64bit.tar.gz"],
 ["raot-v1.906-linux64.zip", "https://https://github.com/raotversions/raotversions/releases/download/linux1.906/raot-v1.906-linux64.zip"],
