@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RAoT Version Cache</title>
+<link rel="stylesheet" href="./style.css"/>
+<link rel="shortcut icon" href="raot.ico"/>
+</head>
+<body>
+	<h1 style="width: 100%; text-align: center">Version Cache for Roark's Attack on Titan Fan Game</h1>
+	<div width="100%" height="100%" style="padding: 1em; flex-grow: 1">
+	
+	<center>
+	<div class="dropdown"><div><span></span> Windows</div><div></div></div>
+	<br>
+	<div class="dropdown"><div><span></span> Linux</div><div></div></div>
+	<br>
+	<div class="dropdown"><div><span></span> Mac</div><div></div></div>
+	</center>
+	
+	</div>
+	
+	<center>If you have a version that's not here, please send it to <span style="background-color: black; padding: 1px">Comrade Matt#2623</span> on Discord</center>
+	<div class="flexbox">
+		<div><center><a href="https://gamejolt.com/games/raot/613147" target="_blank"><img src="gamejolt.png"><br>RAoT Game Jolt Page</a></center></div>
+		<div><center><a href="https://roarkdev.itch.io/raot" target="_blank"><img src="raot.ico"><br>RAoT itch.io Page</a></center></div>
+		<div><center><a href="https://discordapp.com/invite/xpPb4at" target="_blank"><img src="discord.png"><br>RAoT Discord Server</a></center></div>
+		<div><center><a href="https://discord.gg/yXThWFxwyd" target="_blank"><img src="no-gas.png"><br>No Gas Discord Server</a></center></div>
+	</div>
+	
+	<script src="dropdown.js"></script>
+	<script src="links.js"></script>
+	<script>
+		
+		const log = (str) => { document.getElementById("log").innerHTML += str + "\n"; }
+		
+		function vcmp(ver1, ver2) {
+			let start1 = ver1.search(/[0-9]/);
+			let start2 = ver2.search(/[0-9]/);
+			if(start1 == -1) return false;
+			if(start2 == -1) return true;
+			let num1 = "";
+			let dots = 0;
+			for(let i = start1; dots < 1 || ver1[i].match(/[0-9]/) != null; i++) {
+				num1 += ver1[i];
+				if(ver1[i] == ".") dots++;
+			}
+			let num2 = "";
+			dots = 0;
+			for(let i = start2; dots < 1 || ver2[i].match(/[0-9]/) != null; i++) {
+				num2 += ver2[i];
+				if(ver2[i] == ".") dots++;
+			}
+			return parseFloat(num2) > parseFloat(num1);
+		}
+			
+		let platforms = [/win|launch/i, /lin/i, /mac|app/i];
+		let drops = document.getElementsByClassName("dropdown");
+		for(let i = 0; i < drops.length; i++) {
+			let links = [];
+			for(let v = 0; v < vers.length; v++)
+				if(vers[v][0].search(platforms[i]) != -1)
+					links.push(vers[v]);
+			let sorting = true;
+			while(sorting) {
+				sorting = false;
+				for(let j = 0; j + 1 < links.length; j++)
+					if(vcmp(links[j][0], links[j+1][0])) {
+						sorting = true;
+						let temp = links[j];
+						links[j] = links[j+1];
+						links[j+1] = temp;
+					}
+			}
+			for(let j = 0; j < links.length; j++)
+				drops[i].children[1].innerHTML += "<div class='link'><a href='" + (links[j][1].search("google") == -1 ? links[j][1] + "' download": gLink(links[j][1]) + "' target='_blank'" ) + ">" + links[j][0] + "</a></div>";
+		}
+	</script>
+	</body>
+</html>
