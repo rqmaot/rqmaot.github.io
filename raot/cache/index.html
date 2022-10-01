@@ -36,23 +36,28 @@
 		const log = (str) => { document.getElementById("log").innerHTML += str + "\n"; }
 		
 		function vcmp(ver1, ver2) {
-			let start1 = ver1.search(/[0-9]/);
-			let start2 = ver2.search(/[0-9]/);
+			
+			let start1 = ver1.search(/\d/);
+			let start2 = ver2.search(/\d/);
+			
 			if(start1 == -1) return false;
 			if(start2 == -1) return true;
-			let num1 = "";
-			let dots = 0;
-			for(let i = start1; dots < 1 || ver1[i].match(/[0-9]/) != null; i++) {
-				num1 += ver1[i];
-				if(ver1[i] == ".") dots++;
-			}
-			let num2 = "";
-			dots = 0;
-			for(let i = start2; dots < 1 || ver2[i].match(/[0-9]/) != null; i++) {
-				num2 += ver2[i];
-				if(ver2[i] == ".") dots++;
-			}
-			return parseFloat(num2) > parseFloat(num1);
+			
+			let num1 = ver1.substring(start1);
+			num1 = num1.substring(0, num1.search(/[^\d\.]/) - 1);
+			let num2 = ver2.substring(start2);
+			num2 = num2.substring(0, num2.search(/[^\d\.]/) - 1);
+			
+			let i1 = num1.substring(0, num1.search("."));
+			let i2 = num2.substring(0, num2.search("."));
+			
+			if(parseInt(i1) > parseInt(i2)) return false;
+			if(parseInt(i1) < parseInt(i2)) return true;
+			
+			num1 = num1.substring(num1.search(".") + 2);
+			num2 = num2.substring(num2.search(".") + 2);
+			
+			return parseInt(num1) < parseInt(num2);
 		}
 			
 		let platforms = [/win|raotlaunch/i, /lin/i, /mac|app/i, /dev|testinglaunch/i];
