@@ -29,7 +29,8 @@ body {
 
 #content {
   z-index: 0;
-  position: fixed;
+  position: absolute;
+  left: 15vw;
   width: 70vw;
   font-family: Lato, LatoBla, Trebuchet;
   background-color: rgba(23, 27, 36, 0.85);
