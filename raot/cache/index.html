@@ -15,6 +15,8 @@
 	<div class="dropdown"><div><span></span> Linux</div><div></div></div>
 	<br>
 	<div class="dropdown"><div><span></span> Mac</div><div></div></div>
+	<br>
+	<div class="dropdown"><div><span></span> Development Build (Windows Only)</div><div></div></div>
 	</center>
 	
 	</div>
@@ -53,7 +55,7 @@
 			return parseFloat(num2) > parseFloat(num1);
 		}
 			
-		let platforms = [/win|launch/i, /lin/i, /mac|app/i];
+		let platforms = [/win|raotlaunch/i, /lin/i, /mac|app/i, /dev|testinglaunch/i];
 		let drops = document.getElementsByClassName("dropdown");
 		for(let i = 0; i < drops.length; i++) {
 			let links = [];
