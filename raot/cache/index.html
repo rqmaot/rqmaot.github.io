@@ -48,8 +48,8 @@
 			let num2 = ver2.substring(start2);
 			num2 = num2.substring(0, num2.search(/[^\d\.]/) - 1);
 			
-			let i1 = num1.substring(0, num1.search("."));
-			let i2 = num2.substring(0, num2.search("."));
+			let i1 = num1.substring(0, num1.search(".") + 1);
+			let i2 = num2.substring(0, num2.search(".") + 1);
 			
 			if(parseInt(i1) > parseInt(i2)) return false;
 			if(parseInt(i1) < parseInt(i2)) return true;
