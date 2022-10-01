@@ -8,19 +8,16 @@
   src: url("trebuchet.otf");
 }
 
-html {
-  background-image: url(./background.jpg);
-  background-repeat: no-repeat;
-  background-position: 50% 200%;
-  background-size: 105vw 100vh;
-  background-attachment: fixed;
+#bg {
+  z-index: -200;
+  position: fixed;
+  left: -2.5vw;
+  width: 105vw;
+  height: 100vh;
 }
 
 body {
   width: 70vw;
-  font-family: Lato, LatoBla, Trebuchet;
-  background-color: rgba(23, 27, 36, 0.85);
-  color: white;
   margin-top: -10%;
   padding-top: 10%;
   margin-left: 15%;
@@ -28,6 +25,13 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+}
+
+#content {
+  z-index: 0;
+  font-family: Lato, LatoBla, Trebuchet;
+  background-color: rgba(23, 27, 36, 0.85);
+  color: white;
 }
 
 .dropdown div:first-child  {
