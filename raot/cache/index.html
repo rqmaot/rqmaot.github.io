@@ -82,24 +82,5 @@
 				drops[i].children[1].innerHTML += "<div class='link'><a href='" + (links[j][1].search("google") == -1 ? links[j][1] + "' download": gLink(links[j][1]) + "' target='_blank'" ) + ">" + links[j][0] + "</a></div>";
 		}
 	</script>
-	<script>
-		/* Code to keep background from adjusting when the scrollbar comes on
-		by Perttu on StackOverflow (https://stackoverflow.com/users/1532332/perttu)
-		https://stackoverflow.com/a/48705670
-		*/
-		fixBackgroundSizeCover = function(event) {
-			var bgImageWidth = 1920,
-			bgImageHeight = 1080,
-   			bgImageRatio = bgImageWidth / bgImageHeight,
-   			windowSizeRatio = window.innerWidth / window.innerHeight;
-  			if (bgImageRatio > windowSizeRatio) {
-    				document.body.style.backgroundSize = 'auto 100vh';
-  			} else {
-    				document.body.style.backgroundSize = '100vw auto';
-  			}
-		};
-		fixBackgroundSizeCover();
-		window.addEventListener('resize', fixBackgroundSizeCover);
-	</script>
 	</body>
 </html>
