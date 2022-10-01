@@ -12,7 +12,7 @@ html {
   background-image: url(./background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 200%;
-  background-size: 105% 100%;
+  /*background-size: 105% 100%;*/
   background-attachment: fixed;
 }
 
