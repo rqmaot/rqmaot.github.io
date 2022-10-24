@@ -21,7 +21,10 @@ var vers = [
 ["raotfg_v0.2.0_win32.zip", "https://github.com/raotversions/raotversions/releases/download/win0.2.0/raotfg_v0.2.0_win32.zip"],
 ["raotdev-0.1035.zip", "https://github.com/rqmaot/raotcache/releases/download/dev-0.1035/raotdev-0.1035.zip"],
 ["RaotTestingLauncher.exe", "https://github.com/rqmaot/raotcache/releases/download/dev-launcher/RaotTestingLauncher.exe"],
-["raotdev-0.978.zip", "https://github.com/rqmaot/raotcache/releases/download/dev-0.978/raotdev-0.978.zip"]
+["raotdev-0.978.zip", "https://github.com/rqmaot/raotcache/releases/download/dev-0.978/raotdev-0.978.zip"],
+["raot_2.085_windows.zip", "https://github.com/rqmaot/raotcache/releases/download/win2.085/raot_2.085_windows.zip"],
+["raot_2.085_linux.tar.gz", "https://github.com/rqmaot/raotcache/releases/download/linux2.085/raot_2.085_linux.tar.gz"],
+["raot_2.085_mac.zip", "https://github.com/rqmaot/raotcache/releases/download/mac2.085/raot_2.085_mac.zip"]
 ];
 
 /* Google Drive Links
