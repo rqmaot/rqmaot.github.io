@@ -27,7 +27,7 @@ var vers = [
 ["raot_2.085_mac.zip", "https://github.com/rqmaot/raotcache/releases/download/mac2.085/raot_2.085_mac.zip"],
 ["raot_2.086_windows.zip", "https://github.com/rqmaot/raotcache/releases/download/win2.086/raot_2.086_windows.zip"],
 ["raot_2.086_linux.tar.gz", "https://github.com/rqmaot/raotcache/releases/download/linux2.086/raot_2.086_linux.tar.gz"],
-["raot_2.086_mac.zip", "https://github.com/rqmaot/raotcache/releases/download/mac2.086/raot_2.086_mac.zip"].
+["raot_2.086_mac.zip", "https://github.com/rqmaot/raotcache/releases/download/mac2.086/raot_2.086_mac.zip"]
 ];
 
 /* Google Drive Links
