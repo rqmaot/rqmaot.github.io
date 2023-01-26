@@ -10,9 +10,11 @@ function vcmp(ver1, ver2) {
   if(start2 == -1) return true;
 			
   let num1 = ver1.substring(start1);
-  num1 = num1.substring(0, num1.search(/[^\d\.]/) - 1);
+  let end1 = num1.search(/[^\d\.]/);
+  if(end1 != -1) num1 = num1.substring(0, end1);
   let num2 = ver2.substring(start2);
-	num2 = num2.substring(0, num2.search(/[^\d\.]/) - 1);
+  let end2 = num2.search(/[^\d\.]/);
+  if(end2 != -1) num2 = num2.substring(0, end2);
 			
   let i1 = num1.substring(0, num1.search(".") + 1);
   let i2 = num2.substring(0, num2.search(".") + 1);
