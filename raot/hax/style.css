@@ -1,0 +1,43 @@
+@font-face {
+    font-family: LatoBla;
+    src: url("../resources/Lato-Bla.ttf");
+  }
+  
+  @font-face {
+    font-family: Trebuchet;
+    src: url("../resources/trebuchet.otf");
+  }
+
+html {
+    background-image: url('../resources/background.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 105vw 100vh;
+    background-position-x: -2.5vw;
+    font-family: Lata, LataBla, Trebuchet;
+}
+
+body {
+    color: white;
+    background-color: rgba(33, 37, 56, 1);
+    width: 95vw;
+    height: 95vh;
+    position: absolute;
+    left: 2vw;
+    top: .8vh;
+}
+
+h1 {
+    width: 95vw;
+    text-align: center;
+    background-color: rgb(150, 0, 0);
+}
+
+h3 {
+    text-align: center;
+    line-height: 1.5em;
+}
+
+img {
+    max-width: 90vw;
+}
