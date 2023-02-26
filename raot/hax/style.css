@@ -1,12 +1,12 @@
 @font-face {
     font-family: LatoBla;
     src: url("../resources/Lato-Bla.ttf");
-  }
+}
   
-  @font-face {
+@font-face {
     font-family: Trebuchet;
     src: url("../resources/trebuchet.otf");
-  }
+}
 
 html {
     background-image: url('../resources/background.jpg');
@@ -14,7 +14,7 @@ html {
     background-repeat: no-repeat;
     background-size: 105vw 100vh;
     background-position-x: -2.5vw;
-    font-family: Lata, LataBla, Trebuchet;
+    font-family: Lato, LatoBla, Trebuchet;
 }
 
 body {
@@ -25,6 +25,8 @@ body {
     position: absolute;
     left: 2vw;
     top: .8vh;
+    padding: 0;
+    padding-bottom: 1em;
 }
 
 h1 {
@@ -38,6 +40,20 @@ h3 {
     line-height: 1.5em;
 }
 
+p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
 img {
     max-width: 90vw;
+    padding: 0;
+    margin: 0;
+
+p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
 }
