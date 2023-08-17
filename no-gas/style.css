@@ -1,0 +1,127 @@
+@font-face {
+  font-family: LatoBla;
+  src: url("Lato-Bla.ttf");
+}
+
+@font-face {
+  font-family: Trebuchet;
+  src: url("trebuchet.otf");
+}
+
+#bg {
+  z-index: -200;
+  position: fixed;
+  left: -2.5vw;
+  width: 105vw;
+  height: 100vh;
+}
+
+body {
+  width: 70vw;
+  margin-top: -10%;
+  padding-top: 10%;
+  margin-left: 15%;
+  min-height: 98%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+#content {
+  z-index: 0;
+  position: absolute;
+  left: 15vw;
+  width: 70vw;
+  font-family: Lato, LatoBla, Trebuchet;
+  background-color: rgba(23, 27, 36, 0.85);
+  color: white;
+}
+
+.dropdown div:first-child  {
+  border: 2px solid #555555;
+  position: relative;
+  text-indent: 30px;
+  //border-radius: 25% 25% 0% 0%;
+  font-size: 20pt;
+  width: 100%;
+  text-align: left;
+  background-color: rgba(40, 46, 62, 0.85);
+  user-select: none; 
+}
+
+
+.dropdown { width: 100% }
+
+.dropdown div:first-child:hover { background-color: rgba(60, 68, 93, 0.85); }
+
+.dropdown span {
+  margin-left: -50px;
+  font-size: 12pt;
+  position: absolute;
+  top: 5px;
+}
+
+.dropdown div.link:first-child, .dropdown .link {
+  border: 1px solid gray;
+  border-top: none;
+  position: relative;
+  text-indent: 30px;
+  //border-radius: 25% 25% 0% 0%;
+  font-size: 20pt;
+  width: 100%;
+  text-align: left;
+  background-color: rgba(50, 57, 78, 0.85);
+}
+
+
+
+.dropdown .link:first-child:hover, .dropdown .link:hover {
+  background-color: rgba(80, 91, 124, 0.85);
+}
+
+.link a {
+  border: revert;
+  width: 100%;
+  overflow: visible;
+  display: block;
+  font-size: 16pt;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid gray;
+  color: white;
+  text-decoration: none;
+}
+
+.flexbox {
+  width: 100%;
+  position: flex;
+  align-self: flex-end;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.flexbox div {
+  background-color: rgba(40, 46, 62, 0.85);
+  margin: 1em;
+  padding: 0;
+  display: inline-block;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.flexbox div a {
+  display: block;
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+  font-size: 10pt;
+}
+
+.flexbox div:hover {
+  background-color: rgba(80, 91, 124, 0.85);
+}
+
+.flexbox div img {
+  max-height: 100px;
+  margin-bottom: 3px;
+}
