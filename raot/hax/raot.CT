@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"No-Clip [ALT+,]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT,UnityPlayer.dll,F3 41 0F 10 4B 4C)
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [r11+4C],(float)100
+  movss xmm1,[r11+4C]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+
+INJECT:
+  db F3 41 0F 10 4B 4C
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Activate</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>188</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Deactivate</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>190</Key>
+          </Keys>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"Disable No-Clip [ALT+.]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT,UnityPlayer.dll,F3 41 0F 10 4B 4C)
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [r11+4C],0
+  movss xmm1,[r11+4C]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+
+INJECT:
+  db F3 41 0F 10 4B 4C
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Activate</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>190</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Deactivate</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>188</Key>
+          </Keys>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>69</ID>
+      <Description>"Machine Guns [ALT+R]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(chrg,(float)0.25)
+
+[ENABLE]
+
+aobscanmodule(stress,GameAssembly.dll,8B 40 18 48 8B 5C 24 30 89)
+alloc(newmemstress,$1000,stress)
+
+aobscanmodule(LEFT,GameAssembly.dll,8B 81 B0 00 00 00 85 C0 7E 07)
+alloc(newleft,$1000,LEFT)
+
+aobscanmodule(READY,GameAssembly.dll,1F F3 0F 10 42 28)
+alloc(newmemready,$1000,READY)
+
+aobscanmodule(POINT,GameAssembly.dll,0F B6 4B 2C 84 C0)
+alloc(newmempoint,$1000,POINT)
+
+label(codestress)
+label(returnstress)
+
+label(codeleft)
+label(returnleft)
+
+label(codeready)
+label(returnready)
+
+label(codepoint)
+label(returnpoint)
+
+newmemstress:
+
+codestress:
+  mov [rax+18],(float)0.0
+  mov eax,[rax+18]
+  mov rbx,[rsp+30]
+  jmp returnstress
+
+stress:
+  jmp newmemstress
+  nop 3
+returnstress:
+registersymbol(stress)
+
+newleft:
+
+codeleft:
+  mov [rcx+000000B0],1
+  mov eax,[rcx+000000B0]
+  jmp returnleft
+
+LEFT:
+  jmp newleft
+  nop
+returnleft:
+registersymbol(LEFT)
+
+newmemready:
+
+codeready:
+  cmp [rdx+28],chrg
+  jns skipassign
+  mov [rdx+28],chrg
+  skipassign:
+  movss xmm0,[rdx+28]
+  jmp returnready
+
+READY+01:
+  jmp newmemready
+returnready:
+registersymbol(READY)
+
+newmempoint:
+
+codepoint:
+  mov [rbx+2C],1
+  movzx ecx,byte ptr [rbx+2C]
+  test al,al
+  jmp returnpoint
+
+POINT:
+  jmp newmempoint
+  nop
+returnpoint:
+registersymbol(POINT)
+
+[DISABLE]
+
+stress:
+  db 8B 40 18 48 8B 5C 24 30
+
+unregistersymbol(stress)
+dealloc(newmemstress)
+
+LEFT:
+  db 8B 81 B0 00 00 00
+
+unregistersymbol(LEFT)
+dealloc(newleft)
+
+READY+01:
+  db F3 0F 10 42 28
+
+unregistersymbol(READY)
+dealloc(newmemready)
+
+POINT:
+  db 0F B6 4B 2C 84 C0
+
+unregistersymbol(POINT)
+dealloc(newmempoint)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>87</ID>
+      <Description>"Infinite Reserve"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(ammocount,GameAssembly.dll,48 8B 81 A8 00 00 00 48 C1 E8 20 85 C0 7F) // should be unique
+alloc(newmem_ac,$1000,ammocount)
+
+label(code_ac)
+label(return_ac)
+
+newmem_ac:
+
+code_ac:
+  mov [rcx+000000A8],4
+  mov [rcx+000000AC],4
+  mov rax,[rcx+000000A8]
+  jmp return_ac
+
+ammocount:
+  jmp newmem_ac
+  nop 2
+return_ac:
+registersymbol(ammocount)
+
+[DISABLE]
+
+ammocount:
+  db 48 8B 81 A8 00 00 00
+
+unregistersymbol(ammocount)
+dealloc(newmem_ac)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Always Loaded"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : raot.exe
+  Version: 
+  Date   : 2023-04-13
+  Author : screwdriver
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(load,GameAssembly.dll,8B 81 B0 00 00 00 85 C0 7E 07) // should be unique
+alloc(newmem,$1000,load)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+000000B0],(int)100
+  mov [rcx+000000B4],(int)100
+  mov eax,[rcx+000000B0]
+  jmp return
+
+load:
+  jmp newmem
+  nop
+return:
+registersymbol(load)
+
+[DISABLE]
+
+load:
+  db 8B 81 B0 00 00 00
+
+unregistersymbol(load)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+4DFC36
+
+GameAssembly.dll+4DFC1F: 85 C0                 - test eax,eax
+GameAssembly.dll+4DFC21: 7E 38                 - jle GameAssembly.dll+4DFC5B
+GameAssembly.dll+4DFC23: 3D FF 00 00 00        - cmp eax,000000FF
+GameAssembly.dll+4DFC28: 7D 31                 - jnl GameAssembly.dll+4DFC5B
+GameAssembly.dll+4DFC2A: 45 84 C0              - test r8l,r8l
+GameAssembly.dll+4DFC2D: 75 1D                 - jne GameAssembly.dll+4DFC4C
+GameAssembly.dll+4DFC2F: B0 01                 - mov al,01
+GameAssembly.dll+4DFC31: C3                    - ret 
+GameAssembly.dll+4DFC32: 84 D2                 - test dl,dl
+GameAssembly.dll+4DFC34: 74 11                 - je GameAssembly.dll+4DFC47
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+4DFC36: 8B 81 B0 00 00 00     - mov eax,[rcx+000000B0]
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+4DFC3C: 85 C0                 - test eax,eax
+GameAssembly.dll+4DFC3E: 7E 07                 - jle GameAssembly.dll+4DFC47
+GameAssembly.dll+4DFC40: 3D FF 00 00 00        - cmp eax,000000FF
+GameAssembly.dll+4DFC45: 7C E8                 - jl GameAssembly.dll+4DFC2F
+GameAssembly.dll+4DFC47: 45 84 C0              - test r8l,r8l
+GameAssembly.dll+4DFC4A: 74 0F                 - je GameAssembly.dll+4DFC5B
+GameAssembly.dll+4DFC4C: 48 8B 81 B0 00 00 00  - mov rax,[rcx+000000B0]
+GameAssembly.dll+4DFC53: 48 C1 E8 20           - shr rax,20
+GameAssembly.dll+4DFC57: 85 C0                 - test eax,eax
+GameAssembly.dll+4DFC59: 7F 03                 - jg GameAssembly.dll+4DFC5E
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No Stress [ALT+S]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(stress,GameAssembly.dll,8B 40 18 48 8B 5C 24 30 89)
+alloc(newmem,$1000,stress)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rax+18],(float)0.0
+  mov eax,[rax+18]
+  mov rbx,[rsp+30]
+  jmp return
+
+stress:
+  jmp newmem
+  nop 3
+return:
+registersymbol(stress)
+
+[DISABLE]
+
+stress:
+  db 8B 40 18 48 8B 5C 24 30
+
+unregistersymbol(stress)
+dealloc(newmem)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>83</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Deactivate</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>70</Key>
+          </Keys>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Infinite Gas [ALT+G]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(gas,GameAssembly.dll,8B 42 18 89 41 44)
+alloc(newmem,$1000,gas)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rdx+18],(float)1.0
+  mov eax,[rdx+18]
+  mov [rcx+44],eax
+  jmp return
+
+gas:
+  jmp newmem
+  nop
+return:
+registersymbol(gas)
+
+[DISABLE]
+
+gas:
+  db 8B 42 18 89 41 44
+
+unregistersymbol(gas)
+dealloc(newmem)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>71</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No Gas [CTRL+H]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(gas,GameAssembly.dll,8B 42 18 89 41 44)
+alloc(newmem,$1000,gas)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rdx+18],(float)0.0
+  mov eax,[rdx+18]
+  mov [rcx+44],eax
+  jmp return
+
+gas:
+  jmp newmem
+  nop
+return:
+registersymbol(gas)
+
+[DISABLE]
+
+gas:
+  db 8B 42 18 89 41 44
+
+unregistersymbol(gas)
+dealloc(newmem)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>72</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>53</ID>
+      <Description>"Utgard Top [CTRL+1]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)363.0)
+define(tpy,(float)81.0)
+define(tpz,(float)388.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>49</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>52</ID>
+      <Description>"Utgard Dab Tower [CTRL+2]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)552.0)
+define(tpy,(float)35.0)
+define(tpz,(float)413.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>50</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>73</ID>
+      <Description>"Dab Tower Top [ALT+3]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)553.0)
+define(tpy,(float)39.0)
+define(tpz,(float)414.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>51</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>74</ID>
+      <Description>"North Cliff [ALT+4]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)505.0)
+define(tpy,(float)82.5)
+define(tpz,(float)489.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>52</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>75</ID>
+      <Description>"South Cliff [ALT+5]"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)490.0)
+define(tpy,(float)81.5)
+define(tpz,(float)294.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>18</Key>
+            <Key>53</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"X tp"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(x,(float)580.0)
+
+[ENABLE]
+
+aobscanmodule(INJECTX,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmem,$1000,INJECTX)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+20],x
+  mov eax,[rdx+14]
+  jmp return
+
+INJECTX:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECTX)
+
+[DISABLE]
+
+INJECTX:
+  db 89 41 20 8B 42 14
+
+unregistersymbol(INJECTX)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>49</ID>
+      <Description>"Y tp"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(y,(float)100.0)
+
+[ENABLE]
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmem,$1000,YTP)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+24],y
+  mov eax,[rdx+18]
+  jmp return
+
+YTP:
+  jmp newmem
+  nop
+return:
+registersymbol(YTP)
+
+[DISABLE]
+
+YTP:
+  db 89 41 24 8B 42 18
+
+unregistersymbol(YTP)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Z tp"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(z,(float)80.0)
+
+[ENABLE]
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB)
+alloc(newmem,$1000,ZTP)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+28],z
+  test rbx,rbx
+  jmp return
+
+ZTP:
+  jmp newmem
+  nop
+return:
+registersymbol(ZTP)
+
+[DISABLE]
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(ZTP)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"XYZ TP (edit script to set coords)"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)600.0)
+define(tpy,(float)7.0)
+define(tpz,(float)383.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys/>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"Utgard Well"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>define(tpx,(float)407.0)
+define(tpy,(float)14.0)
+define(tpz,(float)404.0)
+
+[ENABLE]
+
+aobscanmodule(XTP,UnityPlayer.dll,89 41 20 8B 42 14 89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemx,$1000,XTP)
+
+aobscanmodule(YTP,UnityPlayer.dll,89 41 24 8B 42 18 89 41 28 48 85)
+alloc(newmemy,$1000,YTP)
+
+aobscanmodule(ZTP,UnityPlayer.dll,89 41 28 48 85 DB) // should be unique
+alloc(newmemz,$1000,ZTP)
+
+label(codex)
+label(returnx)
+
+label(codey)
+label(returny)
+
+label(codez)
+label(returnz)
+
+newmemx:
+
+codex:
+  mov [rcx+20],tpx
+  mov eax,[rdx+14]
+  jmp returnx
+
+XTP:
+  jmp newmemx
+  nop
+returnx:
+registersymbol(XTP)
+
+newmemy:
+
+codey:
+  mov [rcx+24],tpy
+  mov eax,[rdx+18]
+  jmp returny
+
+YTP:
+  jmp newmemy
+  nop
+returny:
+registersymbol(YTP)
+
+newmemz:
+
+codez:
+  mov [rcx+28],tpz
+  test rbx,rbx
+  jmp returnz
+
+ZTP:
+  jmp newmemz
+  nop
+returnz:
+registersymbol(ZTP)
+
+[DISABLE]
+
+XTP:
+  db 89 41 20 8B 42 14
+
+YTP:
+  db 89 41 24 8B 42 18
+
+ZTP:
+  db 89 41 28 48 85 DB
+
+unregistersymbol(XTP)
+dealloc(newmemx)
+
+unregistersymbol(YTP)
+dealloc(newmemy)
+
+unregistersymbol(ZTP)
+dealloc(newmemz)
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys/>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
