@@ -54,9 +54,9 @@ const arr_cmp = (arr1, arr2) => {
 }
 
 const ver_str_cmp = (v1, v2) => {
-  let v1 = get_ver_arr(v1);
-  let v2 = get_ver_arr(v2);
-  return arr_cmp(v1, v2);
+  let v_1 = get_ver_arr(v1);
+  let v_2 = get_ver_arr(v2);
+  return arr_cmp(v_1, v_2);
 }
 
 /*
