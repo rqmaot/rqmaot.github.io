@@ -1,6 +1,65 @@
 const log = (str) => { document.getElementById("log").innerHTML += str + "\n"; }
 		
+const filter = (arr, cond) => {
+  let filtered = [];
+  for(const item of arr) if(cond(item)) filtered.push(item);
+  return filtered
+}
 
+const fold = (arr, base, f) => {
+  let folded = base;
+  for(const item of arr) folded = f(folded, item);
+  return folded
+}
+
+const is_num_or_dot = char => 
+	char === '.' || 
+    char.charCodeAt(0) >= '0'.charCodeAt(0) && 
+    char.charCodeAt(0) <= '9'.charCodeAt(0);
+
+const get_ver = ver_str => fold(
+  filter(ver_str, is_num_or_dot), 
+  "", 
+  (x, y) => x + y
+)
+
+const ver_arr = ver => {
+  let arr = [];
+  while(ver.length > 0) {
+    let end = ver.indexOf(".");
+    if(end == 0) {
+      ver = ver.substring(1);
+      continue;
+    }
+    if(end == -1) {
+      arr.push(parseInt(ver));
+      return arr;
+    }
+    arr.push(parseInt(ver.substring(0, end)));
+    ver = ver.substring(end + 1);
+  }
+  return arr;
+}
+
+const get_ver_arr = ver_str => ver_arr(get_ver(ver_str));
+
+const arr_cmp = (arr1, arr2) => {
+  if(!arr1[0] && !arr2[0]) return 0;
+  if(!arr1[0]) return -1;
+  if(!arr2[0]) return 1;
+  let diff = arr1[0] - arr2[0];
+  if(diff < 0) return -1;
+  if(diff > 0) return 1;
+  return arr_cmp(arr1.subarray(1), arr2.subarray(1));
+}
+
+const ver_str_cmp = (v1, v2) => {
+  let v1 = get_ver_arr(v1);
+  let v2 = get_ver_arr(v2);
+  return arr_cmp(v1, v2);
+}
+
+/*
 function vcmp(ver1, ver2) {
 			
   let start1 = ver1.search(/\d/);
@@ -28,7 +87,9 @@ function vcmp(ver1, ver2) {
   return parseInt(num1) < parseInt(num2);
 
 }
+*/
 
+const vcmp = ver_str_cmp;
 
 let platforms = [/win|raotlaunch/i, /lin/i, /mac|app/i, /dev|testinglaunch/i];
 let drops = document.getElementsByClassName("dropdown");
