@@ -50,7 +50,7 @@ const arr_cmp = (arr1, arr2) => {
   let diff = arr1[0] - arr2[0];
   if(diff < 0) return -1;
   if(diff > 0) return 1;
-  return arr_cmp(arr1.subarray(1), arr2.subarray(1));
+  return arr_cmp(arr1.slice(1), arr2.slice(1));
 }
 
 const ver_str_cmp = (v1, v2) => {
