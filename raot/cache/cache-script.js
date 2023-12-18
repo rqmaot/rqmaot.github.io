@@ -89,7 +89,7 @@ function vcmp(ver1, ver2) {
 }
 */
 
-const vcmp = ver_str_cmp;
+const vcmp = (v1, v2) => ver_str_cmp(v1, v2) < 0;
 
 let platforms = [/win|raotlaunch/i, /lin/i, /mac|app/i, /dev|testinglaunch/i];
 let drops = document.getElementsByClassName("dropdown");
